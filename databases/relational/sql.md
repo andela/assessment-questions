@@ -13,7 +13,7 @@
 | Uzbekistan  |  Central Asia      | 447000   |26000000    |     |
 
 
-1. Select the answer which shows the problem with this SQL code - the indended result should be the single row    containing 'France':
+1. Select the answer which shows the problem with this SQL code - the intended result should be the single row    containing 'France':
 
   ```sql
     SELECT continent
@@ -91,3 +91,10 @@
     | :---------: |:---: |
     | Brazil      |182800000|
     | Colombia    |45600000|
+
+4. How would you design an efficient database schema for a user authorization system?
+
+ - [ ]  Table names: `users`, `permissions`; Columns: `users.permissions` (ENUM)
+ - [ ]  Table names: `users`, `roles`, `users_roles`; Columns: `users_roles.role_id` (INT), `users_roles.user_id` (INT)
+ - [ ]  Table names: `users`, `roles`; Columns: `roles.id` (INT, *unique*), `users.role_id` (INT)
+ - [ ]  **Tables: `users`, `permissions`, `roles`, `permissions_roles`; Columns: `users.role_id` (INT, *unique*), `permissons_roles.role_id` (INT)**
