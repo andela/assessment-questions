@@ -1,5 +1,4 @@
-##world
-
+#####table name >> world
 
 | name        |      continent     |  area    | population | gdp |
 |----------   |:-------------:     |------:   |----------: |----:|
@@ -11,6 +10,10 @@
 | Colombia    |  South America     | 1140000  |45600000    |     |
 | Nauru       |  Asia-Pacific      | 21       |9900        |     |
 | Uzbekistan  |  Central Asia      | 447000   |26000000    |     |
+| Bangladesh | South Asia | 143998 | 152600000 | 67144000000 |
+| United Kingdom | Europe | 242514 | 59600000 | 2022824000000 |
+
+
 
 
 1. Select the answer which shows the problem with this SQL code - the intended result should be the single row    containing 'France':
@@ -92,7 +95,290 @@
     | Brazil      |182800000|
     | Colombia    |45600000|
 
-4. How would you design an efficient database schema for a user authorization system?
+
+4. Select the code that shows the name, region and population of the smallest country in each region
+
+    ```sql
+      SELECT region, name,
+      FROM world x WHERE population <= ALL
+      (SELECT population FROM world y WHERE y.region=x.region AND population>0)
+    ```
+
+   ```sql
+      SELECT region, name, population
+      FROM world WHERE population <= ALL
+      (SELECT population FROM world WHERE population>0)
+    ```
+
+    ```sql
+       SELECT region, name, population
+       FROM world x WHERE population <= ALL
+       (SELECT population FROM world y WHERE y.region=x.region AND population>0)
+    ```
+
+    ```sql
+       SELECT region, name, population
+       FROM world x WHERE population = ALL
+       (SELECT population FROM world y WHERE y.region=x.region AND population>0)
+    ```
+
+    ```sql
+      SELECT region, name, population
+      FROM world x WHERE population <= ALL
+      (SELECT population FROM world y WHERE y.region=x.region AND population<0)
+    ```
+
+5. Select the result that would be obtained from the following code:
+  ```sql
+    SELECT name FROM world
+    WHERE population >
+       (SELECT population
+          FROM bbc
+         WHERE name='United Kingdom')
+    AND region IN
+       (SELECT region
+          FROM bbc
+         WHERE name = 'United Kingdom')
+  ```
+
+  | Table-A |
+  | ------- |
+  | Andorra |
+  | Albania |
+  | Austria |
+  | Bulgaria |
+
+  | Table-B| Table-B |
+  | ------ | ------ |
+  | France | Europe |
+  | Germany | Europe |
+  | Russia | Europe |
+  | Turkey | Europe |
+
+  | Table-C |
+  | ------- |
+  | France |
+  | Germany |
+  | Andorra |
+  | Albania |
+
+  | Table-D |
+  | ------- |
+  | France |
+  | Germany |
+  | Russia |
+  | Turkey |
+
+  | Table-E |
+  | ------- |
+  | France |
+  | Germany |
+  | Russia |
+  | Turkey |
+  | Brazil |
+  | United States of USA |
+  | Canada |
+
+6. Select the result that would be obtained from the following code:
+  ```sql
+     SELECT region, SUM(area)
+     FROM world
+     WHERE SUM(area) > 15000000
+     GROUP BY region
+  ```
+  |Table-A  | |
+  | ------- | ------ |
+  | Europe | 17000000 |
+
+  |Table-B| |
+  | ------- | ------ |
+  | Europe | 17000000 |
+  | Asia-Pacific | 23460000 |
+  | North America | 21660000 |
+
+  |Table-C|
+  | ------- |
+  | Europe |
+  | Asia-Pacific |
+  | North America |
+
+  No result due to invalid use of the GROUP BY function
+
+  No result due to invalid use of the WHERE function
+
+7. Pick the result that would be obtained from the following code:
+  ```sql
+    SELECT region, SUM(area)
+    FROM world
+    GROUP BY region
+    HAVING SUM(area)<= 20000000
+  ```
+  |Table-A|
+  | ------ |
+  | 732240 |
+  | 13403102 |
+  | 17740392 |
+  | 4943771 |
+
+  |Table-B| |
+  | ------- | ------|
+  | Africa | 22550927 |
+  | Asia-Pacific | 28759578 |
+  | Europe | 23866987 |
+  | North America | 21660000 |
+
+  |Table-C|
+  | ------- |
+  | Africa |
+  | Asia-Pacific |
+  | Europe |
+  | North America |
+
+  |Table-D| |
+  | ------- | ------- |
+  | Americas | 732240 |
+  | Middle East | 13403102 |
+  | South America | 17740392 |
+  | South Asia | 9437710 |
+
+  |Table-E|
+  | ------- |
+  | Americas |
+  | Middle East |
+  | South America |
+  | South Asia |
+
+8.  Select the statement that shows the list of actors called 'John' by order of number of movies in which they acted
+
+  ```sql
+    SELECT name, COUNT(movieid)
+    FROM actor JOIN casting ON actorid=actor.id
+    WHERE name IN 'John %'
+    GROUP BY name ORDER BY 2
+  ```
+
+ ```sql
+    SELECT name, COUNT(movieid)
+    FROM actor JOIN casting ON actorid=actor.id
+    WHERE name LIKE 'J%'
+    GROUP BY name ORDER BY 2 DESC
+  ```
+
+  ```sql
+     SELECT name, COUNT(movieid)
+    FROM casting JOIN actor ON actorid=actor.id
+    WHERE name LIKE 'John %'
+    GROUP BY name ORDER BY 2 DESC
+  ```
+
+  ```sql
+    SELECT name, COUNT(movieid)
+    FROM casting JOIN actor
+    WHERE (actorid ON actor.id)
+    AND name LIKE 'John %'
+    GROUP BY name ORDER BY 2 DESC
+  ```
+
+  ```sql
+    SELECT name, COUNT(movieid)
+    FROM casting JOIN actor
+    WHERE name LIKE 'John %'
+    GROUP BY name ORDER BY COUNT(movieid) DESC
+    ```
+
+9.  Select the statement that lists all the actors that starred in movies directed by Ridley Scott who has id 351
+
+   ```sql
+    SELECT name
+    FROM movie JOIN casting
+    AND actor ON movie.id = movieid
+    AND actor.id = actorid
+    WHERE ord = 1
+    AND actor = 351
+  ```
+
+ ```sql
+    SELECT name
+    FROM movie JOIN casting
+    JOIN actor ON movie.id = movieid
+    OR actor.id = actorid
+    WHERE ord = 1 AND director = 351
+  ```
+
+  ```sql
+    SELECT name
+    FROM movie JOIN casting ON movie.id = movieid
+    JOIN actor ON actor.id = actorid
+    WHERE ord = 1 AND actorid = 351
+  ```
+
+  ```sql
+    SELECT name
+    FROM movie JOIN casting ON actor.id = actorid
+    JOIN actor ON movie.id = movieid
+    WHERE ord = 1 AND director = 351
+  ```
+
+  ```sql
+    SELECT name
+    FROM movie JOIN casting ON movie.id = actorid
+    JOIN actor ON actor.id = movieid
+    WHERE director = 351
+  ```
+
+    self join tables
+    <table>
+    <tbody><tr><th><b>stops</b></th><th><b>route</b></th></tr>
+    <tr><td>id</td><td>num</td></tr>
+    <tr><td>name</td><td>company</td></tr>
+    <tr><td></td><td>pos</td></tr>
+    <tr><td></td><td>stop</td></tr>
+    <tr><td></td><td></td></tr>
+    </tbody></table>
+
+10. Select the code that shows the stops that are on route.num '2A' which can be reached with one bus from Haymarket?
+
+ ```sql
+    SELECT S2.id, S2.name, R2.company, R2.num
+    FROM stops S1, stops S2, route R1, route R2
+    WHERE S1.name='Haymarket' AND S1.id=R1.stop
+    AND R1.company=R2.company AND R1.num=R2.num
+    AND R2.stop=S2.id AND R1.num='2A'
+  ```
+
+  ```sql
+    SELECT S2.id, S2.name, R2.company, R2.num
+    FROM stops S1, stops S2, route R1, route R2
+    WHERE S1.name='Craiglockhart' AND S1.id=R1.stop
+    AND R1.company=R2.company AND R1.num=R2.num
+    AND R2.stop=S2.id AND R2.num='2A'
+  ```
+
+  ```sql
+    SELECT S2.id, S2.name, R2.company, R2.num
+    FROM stops S1, stops S2, route R1, route R2
+    WHERE S1.name='Haymarket' AND S1.id=R1.stop
+    AND R1.company=R2.company AND R1.num=R2.num
+    AND R2.stop=S2.id
+  ```
+
+  ```sql
+    SELECT S2.id, S2.name, R2.company, R2.num
+    FROM stops S1, stops S2, route R1, route R2
+    WHERE S1.name='Haymarket' AND S1.id=R1.stop
+    AND R1.company=R2.company AND R1.num=R2.num
+    AND R2.stop=S2.id AND R2.num='2'
+  ```
+
+  ```sql
+    SELECT S2.id, S2.name, R2.company, R2.num
+    FROM stops S1, stops S2, route R1, route R2
+    WHERE S1.name='Haymarket' AND S1.id=R1.stop
+    AND R1.company=R2.company AND R1.num=R2.num
+    AND R2.stop=S2.id AND R2.num='2A'
+  ```
+
+11. How would you design an efficient database schema for a user authorization system?
 
  - [ ]  Table names: `users`, `permissions`; Columns: `users.permissions` (ENUM)
  - [ ]  Table names: `users`, `roles`, `users_roles`; Columns: `users_roles.role_id` (INT), `users_roles.user_id` (INT)
