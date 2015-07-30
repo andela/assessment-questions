@@ -384,3 +384,25 @@
  - [ ]  Table names: `users`, `roles`, `users_roles`; Columns: `users_roles.role_id` (INT), `users_roles.user_id` (INT)
  - [ ]  Table names: `users`, `roles`; Columns: `roles.id` (INT, *unique*), `users.role_id` (INT)
  - [ ]  **Tables: `users`, `permissions`, `roles`, `permissions_roles`; Columns: `users.role_id` (INT, *unique*), `permissons_roles.role_id` (INT)**
+
+12. Normalization is a process within logical design. What is the general goal of
+normalization?
+
+  - [ ] To be able to gather data
+  - [ ] To remove redundancy in data
+  - [ ] To have clean data
+  - [ ] To ensure tables relationships are maintained
+  - [ ] To improve efficiency of our database queries
+
+
+
+  Production tracking is important in many manufacturing environments (e.g., the pharmaceuticals
+  industry, children’s toys, etc.). The following ER diagram captures important information in the
+  tracking of production. Specifically, the ER diagram captures relationships between production
+  lots (or batches), individual production units, and raw materials.
+
+  ![alt text](/er-diagram.jpg)
+
+13. Please convert the ER diagram into a relational database schema. Be certain to indicate
+primary keys and referential integrity constraints.
+
