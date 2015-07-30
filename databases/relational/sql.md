@@ -401,7 +401,7 @@ normalization?
   tracking of production. Specifically, the ER diagram captures relationships between production
   lots (or batches), individual production units, and raw materials.
 
-  ![alt text](/er-diagram.jpg)
+  ![alt text](er-diagram.jpg)
 
 13. Please convert the ER diagram into a relational database schema. Be certain to indicate
 primary keys and referential integrity constraints.
