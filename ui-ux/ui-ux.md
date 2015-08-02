@@ -1,3 +1,7 @@
+##UI/UX Assessment Questions
+
+_The correct questions are highlighted in bold_
+
 1. At Andela, managing trainers is an important concern and one of the areas we would like to be able to collect data on would be Trainer professional development data. We would basically like to know how much professional development trainers are getting by giving them the ability to check-in courses they're attending, books they're reading, seminars they're speaking at, programs they're organising and exams they're taking. Create 3 screens that best incorporate the required functionality needed for this application. (Ambiguity is at a level where the fellows are able to still be creative. Assessment will be primarily on Information Architecture, Navigation, Understanding the User, Interaction Design and Copywriting).
 2. Which of the following are software that can be used to create Wireframes (Select all that apply)
     - **Photoshop**
@@ -21,11 +25,25 @@
 6. What is an the advantage of using CSS pre-processors over regular CSS
     - Ability to put comments within your CSS
     - Selectors are `:not(element)` are not available in regular CSS
-    - Nesting of selectors within each other
+    - **Nesting of selectors within each other**
     - Ability to import external CSS within your CSS file
 7. What are the things to consider most when making your application responsive? (Select all that apply)
-    - Improve performance
+    - **Improve performance**
     - Reduce important functionality
-    - Emphasise vertical scrolling
+    - **Emphasise vertical scrolling**
     - Serve multiple versions of the same application
-8. If I were to get 
+8. What is the best way to visualise the amount of time a user is available in day?
+    - Histogram
+    - **Pie Chart**
+    - Line Chart
+    - Stacked Area Chart
+9. Which of the following is the best feedback mechanisms when a user is uploading an image on the page?
+    - Using an Indeterminate loading bar
+    - **Using a percent slider**
+    - Showing loading text on the page
+    - Disabling all the elements on the page
+10. Which of the following button states correspond to the appropriate CSS state
+    - `mouse over => :over `
+    - `mouse out => :out`
+    - `mouse down => :active`
+    - `mouse over => :active`
