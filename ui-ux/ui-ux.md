@@ -23,7 +23,7 @@ _The correct questions are highlighted in bold_
 5. Which CSS snippet will give me this layout (Two overlapping boxes with a smaller box at the top right corner of the bigger box)
 ![CSS Task Diagram](/ui-ux/images/diagram_1.png)
 	- Snippet 1
-	```
+	```css
 	big-box {
     	position: relative;
     	max-width: 150px;
@@ -36,7 +36,7 @@ _The correct questions are highlighted in bold_
 	}
 	```
 	- **Snippet 2**
-	```
+	```css
 	big-box {
     	position: relative;
     	width: 150px;
@@ -49,7 +49,7 @@ _The correct questions are highlighted in bold_
 	}
 	```
 	- Snippet 3
-	```
+	```css
 	big-box {
     	position: absolute;
     	width: 150px;
