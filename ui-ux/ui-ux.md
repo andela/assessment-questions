@@ -21,7 +21,7 @@ _The correct questions are highlighted in bold_
 	- They are ideal for responsive layouts
 	- They reduce the amount of code you need to write moving on to new projects
 5. Which CSS snippet will give me this layout (Two overlapping boxes with a smaller box at the top right corner of the bigger box)
-![CSS Task Diagram](/images/diagram_1.png)
+![CSS Task Diagram](/ui-ux/images/diagram_1.png)
 	- Snippet 1
 	```
 	big-box {
