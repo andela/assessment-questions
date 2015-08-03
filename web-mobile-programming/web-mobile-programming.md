@@ -1,4 +1,12 @@
 ##Web/Mobile Programming Questions
+**Summary**
+
+This document contains questions that test a fellows knowledge of the following concepts
+
+- HTTP & Request/Response lifecycle
+- HTTP status codes
+- API Authentication (JWT)
+- JSON/AJAX
 
 _The correct answers are highlighted in bold_
 
