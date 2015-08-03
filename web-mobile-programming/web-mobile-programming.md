@@ -1,6 +1,6 @@
 ##Web/Mobile Programming Questions
 
-_The correct questions are highlighted in bold_
+_The correct answers are highlighted in bold_
 
 1. What are HTTP Verbs?
 2. What is the role of the server in HTTP?
