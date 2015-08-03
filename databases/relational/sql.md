@@ -381,6 +381,242 @@
 11. How would you design an efficient database schema for a user authorization system?
 
  - [ ]  Table names: `users`, `permissions`; Columns: `users.permissions` (ENUM)
+
  - [ ]  Table names: `users`, `roles`, `users_roles`; Columns: `users_roles.role_id` (INT), `users_roles.user_id` (INT)
+
  - [ ]  Table names: `users`, `roles`; Columns: `roles.id` (INT, *unique*), `users.role_id` (INT)
+
  - [ ]  **Tables: `users`, `permissions`, `roles`, `permissions_roles`; Columns: `users.role_id` (INT, *unique*), `permissons_roles.role_id` (INT)**
+
+  - [ ]  Table names: `users`, `permissions`; Columns: `permissions.id` (INT, *unique*), `permissions.role_id` (INT)
+
+12. Normalization is a process within logical design. What is the general goal of
+normalization?
+
+  - [ ] To be able to gather data
+
+  - [ ] To remove redundancy in data
+
+  - [ ] To have clean data
+
+  - [ ] To ensure tables relationships are maintained
+
+  - [ ] To improve efficiency of our database queries
+
+
+
+  Production tracking is important in many manufacturing environments (e.g., the pharmaceuticals
+  industry, children’s toys, etc.). The following ER diagram captures important information in the
+  tracking of production. Specifically, the ER diagram captures relationships between production
+  lots (or batches), individual production units, and raw materials.
+
+  ![ER Diagram](er-diagram.jpg)
+
+13. Please convert the ER diagram into a relational database schema. Be certain to indicate
+primary keys and referential integrity constraints.
+
+  ```sql
+    CREATE TABLE "Lot" (
+    "LotNumber"  SERIAL NOT NULL ,
+    "CreatedDate" DATE ,
+    "CostOfMaterials" INTEGER ,
+    PRIMARY KEY ("LotNumber")
+    );
+
+    CREATE TABLE "Production_Units" (
+    "SerialNo"  SERIAL ,
+    "ExactWeight" INTEGER ,
+    "ProductType" VARCHAR ,
+    "ProductDesc" TEXT ,
+    "QualityTest" VARCHAR ,
+    "LotNumber" INTEGER NOT NULL ,
+    PRIMARY KEY ("SerialNo")
+    );
+
+
+    CREATE TABLE "RawMaterials" (
+    "MaterialID"  SERIAL ,
+    "MaterialType" VARCHAR ,
+    "UnitCost" INTEGER ,
+    "LotNumber" INTEGER NOT NULL ,
+    "Units" INTEGER ,
+    PRIMARY KEY ("MaterialID")
+    );
+
+    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "RawMaterial" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+
+  ```
+
+  ```sql
+    CREATE TABLE "Lot" (
+    "LotNumber"  SERIAL NOT NULL ,
+    "CreatedDate" DATE ,
+    "CostOfMaterials" INTEGER ,
+    PRIMARY KEY ("LotNumber")
+    );
+
+    CREATE TABLE "Production_Units" (
+    "SerialNo"  SERIAL ,
+    "ExactWeight" INTEGER ,
+    "ProductType" VARCHAR ,
+    "ProductDesc" TEXT ,
+    "QualityTest" VARCHAR ,
+    "LotNumber" INTEGER NOT NULL ,
+    PRIMARY KEY ("SerialNo")
+    );
+
+
+    CREATE TABLE "RawMaterials" (
+    "MaterialID"  SERIAL ,
+    "MaterialType" VARCHAR ,
+    "UnitCost" INTEGER ,
+    "LotNumber" INTEGER NOT NULL ,
+    "Units" INTEGER ,
+    PRIMARY KEY ("MaterialID")
+    );
+
+  ```
+
+
+  ```sql
+    CREATE TABLE "Lot" (
+    "LotNumber"  SERIAL NOT NULL ,
+    "CreatedDate" DATE ,
+    "CostOfMaterials" INTEGER ,
+    PRIMARY KEY ("LotNumber")
+    );
+
+    CREATE TABLE "Production_Units" (
+    "SerialNo"  SERIAL NOT NULL,
+    "ExactWeight" INTEGER ,
+    "ProductType" VARCHAR ,
+    "ProductDesc" TEXT ,
+    "QualityTest" VARCHAR ,
+    "LotNumber" SERIAL NOT NULL ,
+    PRIMARY KEY ("SerialNo")
+    );
+
+    CREATE TABLE "RawMaterialUsed" (
+    "LotNumber" SERIAL NOT NULL ,
+    "Units" INTEGER ,
+    "MaterialID" SERIAL NOT NULL ,
+    PRIMARY KEY ()
+    );
+
+    CREATE TABLE "RawMaterials" (
+    "MaterialID"  SERIAL NOT NULL,
+    "MaterialType" VARCHAR ,
+    "UnitCost" INTEGER ,
+    PRIMARY KEY ("MaterialID")
+    );
+
+    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("MaterialID") REFERENCES "RawMaterials" ("MaterialID");
+
+  ```
+
+
+  ```sql
+    CREATE TABLE "Lot" (
+    "LotNumber"  SERIAL NOT NULL ,
+    "CreatedDate" DATE ,
+    "CostOfMaterials" INTEGER ,
+    PRIMARY KEY ("LotNumber")
+    );
+
+    CREATE TABLE "Production_Units" (
+    "SerialNo"  SERIAL NOT NULL,
+    "ExactWeight" INTEGER ,
+    "ProductType" VARCHAR ,
+    "ProductDesc" TEXT ,
+    "QualityTest" VARCHAR ,
+    "LotNumber" SERIAL NOT NULL ,
+    PRIMARY KEY ("SerialNo")
+    );
+
+    CREATE TABLE "RawMaterialUsed" (
+    "LotNumber" SERIAL NOT NULL ,
+    "Units" INTEGER ,
+    "MaterialID" SERIAL NOT NULL ,
+    PRIMARY KEY ()
+    );
+
+    CREATE TABLE "RawMaterials" (
+    "MaterialID"  SERIAL NOT NULL,
+    "MaterialType" VARCHAR ,
+    "UnitCost" INTEGER ,
+    PRIMARY KEY ("MaterialID")
+    );
+
+  ```
+
+
+  ```sql
+    CREATE TABLE "Lot" (
+    "LotNumber"  SERIAL NOT NULL ,
+    "CreatedDate" DATE ,
+    "CostOfMaterials" INTEGER ,
+    PRIMARY KEY ("LotNumber")
+    );
+
+    CREATE TABLE "Production_Units" (
+    "SerialNo"  SERIAL NOT NULL,
+    "ExactWeight" INTEGER ,
+    "ProductType" VARCHAR ,
+    "ProductDesc" TEXT ,
+    "QualityTest" VARCHAR ,
+    "LotNumber" SERIAL NOT NULL ,
+    PRIMARY KEY ("SerialNo")
+    );
+
+    CREATE TABLE "RawMaterialUsed" (
+    "LotNumber" SERIAL NOT NULL ,
+    "MaterialID" SERIAL NOT NULL ,
+    PRIMARY KEY ()
+    );
+
+    CREATE TABLE "RawMaterials" (
+    "MaterialID"  SERIAL NOT NULL,
+    "MaterialType" VARCHAR ,
+    "UnitCost" INTEGER ,
+    "Units" INTEGER ,
+    PRIMARY KEY ("MaterialID")
+    );
+
+    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("MaterialID") REFERENCES "RawMaterials" ("MaterialID");
+
+  ```
+
+14. The ER diagram/relational database schema contains several instances of data redundancy.
+Please identify one instance where a data redundancy issue exists.
+
+  - [ ] Material type and product type are being stored on two tables.
+
+  - [ ] ExactWeight is not needed in production unit.
+
+  - [ ] Production type is being stored on each and every
+production unit. It should be removed totally.
+
+ - [ ] Production description is being stored on each and every
+production unit, when these parameters are most likely the same for the entire lot.
+It should be removed.
+
+ - [ ] Production type and production description are being stored on each and every
+production unit, when these parameters are most likely the same for the entire lot.
+They could be stored on the Lot entity.
+
+15. Which of the following is true of database index
+
+  - [ ] They are used to create relationships with other tables
+
+  - [ ] They are needed in all field defined in your database tables
+
+  - [ ] They are not needed in primary keys
+
+  - [ ] They improve speed of data retrieval from the databse.
+
+  - [ ] A database table do not always contain an index
