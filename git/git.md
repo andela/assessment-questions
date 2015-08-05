@@ -21,6 +21,7 @@ _The correct answers are highlighted in **bold**, or indicated_
 	- "...close issue 54"
 	- **"...close #54"**
 	- "...close issue #54"
+	- "...closes issue #54"
 
 
 4. What does `git log -2` do?
@@ -71,17 +72,38 @@ _The correct answers are highlighted in **bold**, or indicated_
 	- `git fetch origin master` (correct)
 
 
-11. You are working on a project with a collleague. She created a feature branch (feature/user-profile) and pushed it to the repository. What single command can you run to pull and create that remote branch locally?
+11. You are working on a project with a colleague. She created a feature branch (feature/user-profile) and pushed it to the repository. What single command can you run to pull and create that remote branch locally?
 	- `git pull --rebase origin feature/user-profile`
 	- `git pull origin feature/user-profile`
 	- `git checkout -b feature/user-profile origin feature/user-profile` (correct)
 
 
-12. Which of the following is not a Git Workflow?
+12. How do you undo a branch merge?
+	- `git merge --undo`
+	- `git merge --abort` (correct)
+	- `git undo merge`
+	- `git merge undo`
+
+
+13. Other than `git merge`, which other command is used for integrating changes from one branch to another?
+	- git join
+	- **git rebase**
+	- git checkout
+	- git squash
+
+
+14. Which of the following is not a Git Workflow?
 	- Anarchy Workflow
 	- Centralized Workflow
 	- Integration-Manager Workflow
 	- Dictator and Lieutenants Workflow
+
+15. What's the name of scripts that run automatically every time a particular event occurs in a Git repository?
+	- pre-commit scripts
+	- Git bash
+	- Git bang
+	- **Git hooks**
+
 
 
 
