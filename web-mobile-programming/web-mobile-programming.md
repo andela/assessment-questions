@@ -11,8 +11,18 @@ This document contains questions that test a fellows knowledge of the following 
 _The correct answers are highlighted in bold_
 
 1. What are HTTP Verbs?
+	- HTTP verbs standardise a way of informing the client about the result of its request.
+	- HTTP verbs tell the server what to do with the data identified by the URL.
+	- HTTP verbs are a simple way to organise interactions between independent systems.
+	- HTTP verbs are how you identify the things that you want to operate on.
 2. What is the role of the server in HTTP?
+	- The server houses necessary resources, such as files, databases, devices, and even processing power.
+	- The server runs applications that the user interfaces directly with.
+	- The server provides a way to access the network
+	- The server  
 3. What is an example use case of cURL?
+	- cURL can be used for dependency management on UNIX machines
+	- cURL can be used to optimise web application speed
 4. Which of the following is a safe HTTP method?
 5. When designing RESTful APIs, which of the following is a possible scenario where the POST method might be used?
 6. What is the meaning of 401 Unauthorized HTTP response code?
