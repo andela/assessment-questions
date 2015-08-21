@@ -24,6 +24,10 @@ _The correct answers are highlighted in bold_
 	- cURL can be used for dependency management on UNIX machines
 	- cURL can be used to optimise web application speed
 4. Which of the following is a safe HTTP method?
+	- GET
+	- POST
+	- PUT
+	- DELETE
 5. When designing RESTful APIs, which of the following is a possible scenario where the POST method might be used?
 6. What is the meaning of 401 Unauthorized HTTP response code?
 7. Which of the following best explains the Request-Response cycle?
@@ -34,4 +38,13 @@ _The correct answers are highlighted in bold_
 12. Which of these is a possible application of JSON
 13. AJAX is built on which of the following technological concepts?
 14. Which of the following HTTP Verb => Action does not correspond?
-15. 
+15. Which of the following HTTP methods is not idempotent?
+	- GET
+	- POST
+	- PUT
+	- DELETE
+16. Which group of HTTP status codes indicate an error occured on the client?
+	- 1xx
+	- 2xx
+	- 4xx
+	- 5xx
