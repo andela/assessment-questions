@@ -443,8 +443,13 @@ primary keys and referential integrity constraints.
     PRIMARY KEY ("MaterialID")
     );
 
-    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
-    ALTER TABLE "RawMaterial" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
+    ALTER TABLE "Production_Units" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
+    
+    ALTER TABLE "RawMaterial" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
 
   ```
 
@@ -511,9 +516,17 @@ primary keys and referential integrity constraints.
     PRIMARY KEY ("MaterialID")
     );
 
-    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
-    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
-    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("MaterialID") REFERENCES "RawMaterials" ("MaterialID");
+    ALTER TABLE "Production_Units" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
+    
+    ALTER TABLE "RawMaterialUsed" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
+    
+    ALTER TABLE "RawMaterialUsed" 
+    ADD FOREIGN KEY ("MaterialID") 
+    REFERENCES "RawMaterials" ("MaterialID");
 
   ```
 
@@ -585,9 +598,17 @@ primary keys and referential integrity constraints.
     PRIMARY KEY ("MaterialID")
     );
 
-    ALTER TABLE "Production_Units" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
-    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("LotNumber") REFERENCES "Lot" ("LotNumber");
-    ALTER TABLE "RawMaterialUsed" ADD FOREIGN KEY ("MaterialID") REFERENCES "RawMaterials" ("MaterialID");
+    ALTER TABLE "Production_Units" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
+    
+    ALTER TABLE "RawMaterialUsed" 
+    ADD FOREIGN KEY ("LotNumber") 
+    REFERENCES "Lot" ("LotNumber");
+    
+    ALTER TABLE "RawMaterialUsed" 
+    ADD FOREIGN KEY ("MaterialID") 
+    REFERENCES "RawMaterials" ("MaterialID");
 
   ```
 
