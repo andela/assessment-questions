@@ -75,7 +75,7 @@ _The correct answers are highlighted in bold_
 	- DELETE - Delete
 15. Which of the following HTTP methods is not idempotent?
 	- GET
-	- POST
+	- **POST**
 	- PUT
 	- DELETE
 16. Which group of HTTP status codes indicate an error occured on the client?
