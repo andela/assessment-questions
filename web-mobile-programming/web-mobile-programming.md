@@ -81,5 +81,5 @@ _The correct answers are highlighted in bold_
 16. Which group of HTTP status codes indicate an error occured on the client?
 	- 1xx
 	- 2xx
-	- 4xx
+	- **4xx**
 	- 5xx
